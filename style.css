@@ -1,0 +1,519 @@
+/* Custom properties (Variables)
+
+    Because we are declaring them in root, these variables will be GLOBALLY AVAILABLE    
+*/
+:root{
+    --clr-light: #fff;
+    --clr-dark: #000000;
+    --clr-accent: #F3C90D;
+
+    --font-family-title: 'Trebuchet MS';
+    --font-family-body: 'Lucida Sans';
+
+    --font-size-sm: 1.4rem;
+    --font-size-md: 2rem;
+    --font-size-lg: 3.2rem;
+    --font-size-xl: 4.8rem;
+
+    --margin-bottom-sm: 1.6rem;
+    --margin-bottom-md: 2.4rem;
+    --margin-bottom-lg: 3.2rem;
+
+    --section-spacing: 4rem 0 2.5rem; /* 4 at top, 0 left/right, 2.5 at bottom */
+    --container-spacing: 0 2.4rem;
+}
+
+/* Base styles */
+* { /* Applying basic reset to Box Model start off */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* we won't add padding/borders to the element size itself */
+}
+
+html {
+    font-size: 60%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family-body);
+    font-size: var(--font-size-md);
+    color: var(--clr-light);
+    background-color: var(--clr-dark);
+    line-height: 3.2rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--clr-light);
+}
+
+i {
+    font-size: 2.4rem;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Reusable classes */
+.container { /* limiting width */
+    max-width: 144rem;
+    margin: 0 auto; /* 0 from top/bottom, horizontally centered */
+    padding: var(--container-spacing);
+}
+
+/* header */
+.header {
+    position: absolute; /* Header will float about content */
+    top: 0;
+    left: 0;
+    width: 100%; /* needed since we made this absolute */
+    z-index: 999; /* header always stays at the front */
+}
+
+.nav {
+    display: flex; /* items are displayed in a row */
+    align-items: center;
+    justify-content: space-between; /* keep spaces between flexbox items */
+    padding-top: 4rem;
+}
+
+.logo-box {
+    max-width: 16.8rem;
+    /*max-width: 40rem;*/
+    /* As we reduce window size, we don't want logo shrinking too much */
+
+    padding-right: 50px;
+    /* don't want squishing into navbar */
+}
+
+.menu {
+    position: fixed; /* will always be at top of screen */
+    top: -100%; /* we will move this back down when menu icon is clicked */
+    left: 50%;
+    width: 80%;
+
+    transform: translateX(-50%);
+    padding: 5rem;
+
+    background-color: var(--clr-dark);
+
+    z-index: 9999;
+
+    transition: 0.5s ease-out;
+}
+
+.menu,
+.nav-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem; /* create spacing */
+}
+
+.menu-toggle-close {
+    position: absolute; /* now, I'm working off of position of menu itself */
+    top: 1rem;
+    right: 1rem; /* put it in the top-right */
+}
+
+.nav-link {
+    letter-spacing: 1px;
+}
+
+.sm-screen-hidden {
+    display: none;
+}
+
+.menu-toggle-icon {
+    cursor: pointer; /* Make it clickable */
+}
+
+/* Menu Styles with JS */
+.menu.menu-opened {
+    top: 0%;
+}
+
+.header::after { /* Background becomes invisible upon clicking menu */
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--clr-dark);
+    z-index: 1500;
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.5s;
+}
+
+.menu-opened.header::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Hero */
+main {
+    overflow: hidden;
+}
+
+.hero {
+    position: relative; /* because images within hero will be absolute */
+    height: 100rem;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: linear-gradient(to down, rgba(0,0,0,0), rgba(0,0,0,1), transparent 77%);
+    z-index: 50; 
+}
+
+.hero-data {
+    padding-top: 15rem;
+    position: relative;
+    z-index: 100;
+}
+
+.tagline {
+    display: inline-block; /* span is inline by default, but we want span to respect padding and margins for top/bottom */
+    font-size: var(--font-size-sm);
+    color: var(--clr-accent);
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 4px;
+    margin-top: 16px;
+    margin-left: 5rem;
+    margin-bottom: var(--margin-bottom-sm);
+    position: relative;
+}
+
+.tagline::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -5rem;
+    width: 4rem;
+    height: 2px;
+    background-color: var(--clr-accent);
+    transform: translateY(-50%);
+}
+
+.title {
+    font-family: var(--font-family-title);
+    font-size: var(--font-size-lg);
+    font-weight: bolder;
+
+    line-height: 1.2;
+    margin-bottom: var(--margin-bottom-md);
+}
+
+.main-title {
+    font-size: var(--font-size-xl);
+}
+
+.btn {
+    display: inline-flex; /* we can also use flex properties */
+    align-self: center;
+    font-size: var(--font-size-md);
+    font-weight: bold;
+    gap: 1rem;
+}
+
+.main-img {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    max-height: 100vh;
+    object-fit: cover;
+    object-position: 30% 50%;
+
+    top: 0;
+}
+
+#sky-view {
+    background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1)), url("./photos/campus-aerial-east-side.jpeg") top/cover no-repeat fixed;
+}
+
+#studying {
+    background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1)), url("./photos/pexels-pixabay-261909.jpg") top/cover no-repeat fixed;
+}
+
+#supplies {
+    background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1)), url("./photos/pexels-mikhail-nilov-7583935.jpg") top/cover no-repeat fixed;
+}
+/*
+.parallax-img-bottom {
+    top: 55%;
+    z-index: 110;
+}
+
+.parallax-img-middle {
+    top: 35%;
+}
+
+.parallax-img-top {
+    top: 0;
+}
+*/
+/* information */
+.cs-information {
+    position: relative;
+    margin-top: -12rem; /* I need to fade my image out up top */
+    z-index: 500;
+}
+
+.d-grid {
+    display: grid;
+}
+
+.card {
+    gap: 6.4rem;
+    margin-bottom: 12rem;
+}
+
+.card-info {
+    position: relative;
+   /*  width: 60rem; */
+    max-width: 70rem;
+    margin: 0 auto;
+}
+
+.count {
+    font-size: 10rem;
+    font-weight: bold;
+    opacity: 0.2;
+    position: absolute;
+    left: -2rem;
+    z-index: -1; /* count will be behind text */
+}
+
+.card-image {
+    width: 60rem;
+    height: 42rem;
+    object-fit: cover;
+    justify-self: center;
+}
+
+.card-image.frame-position-center {
+    object-position: 50% 100%;
+}
+
+.card-description {
+    line-height: 2.9rem;
+    margin-bottom: var(--margin-bottom-md);
+}
+
+.btn-accent {
+    color: var(--clr-accent);
+}
+
+/* Footer */
+.footer {
+    position: relative;
+    padding: 4rem 0 5rem;
+}
+
+.footer-container {
+    row-gap: 3.2rem;
+}
+
+.brand-information > *{ /* all direct children */
+    margin-bottom: var(--margin-bottom-md);
+}
+
+.end-image {
+    float: left;
+    background: var(--clr-accent);
+    border-radius: 20%;
+}
+
+.copyright {
+    font-size: var(--font-size-sm);
+    margin-bottom: 0;
+    opacity: 0.6;
+    text-align: right;
+}
+
+.footer-nav-title {
+    color: var(--clr-accent);
+    font-size: 2rem;
+    margin-bottom: var(--margin-bottom-md);
+}
+
+.footer-nav-link {
+    margin-bottom: var(--margin-bottom-sm);
+}
+
+.brand-information,
+.footer-nav-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Media queries */
+@media screen and (min-width: 760px) {
+    :root {
+        --font-size-xl: 5.6rem;
+        --container-spacing: 0 8rem;
+    }
+
+    hero {
+        height: 100vh;
+    }
+
+    .main-img {
+        height: auto;
+    }
+
+    .card {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 6.4rem;
+        margin-bottom: 20rem;
+    }
+
+    .card-image {
+        grid-column: 1/-1;
+        justify-self: center;
+    }
+
+    .card-info {
+        grid-column: 1/-1;
+    }
+/*
+    .count {
+        font-size: 20rem;
+        left: -8rem;
+    }
+*/
+    .tagline {
+        margin-left: 9.5rem;
+    }
+
+    .tagline::before {
+        width: 7.2rem;
+        left: -9rem;
+    }
+
+    .card-title {
+        font-size: 6.4rem;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    :root {
+        --font-size-xl: 7.5rem;
+    }
+
+    .menu {
+        position: initial;
+        transform: initial;
+        width: initial;
+        background-color: initial;
+        padding: initial;
+        border-radius: initial;
+        transition: initial;
+        margin-left: initial;
+    }
+
+    .menu,
+    .nav-list {
+        flex-direction: row;
+        gap: 0;
+    }
+
+    .sm-screen-hidden {
+        display: block;
+    }
+
+    .lg-screen-hidden,
+    .menu-toggle-icon {
+        display: none;
+    }
+
+    .nav-link {
+        display: inline-block;
+        font-weight: bold;
+        padding: .8rem 2.4rem;
+    }
+
+    .account-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0;
+    }
+
+    .account-link i {
+        font-weight: 300;
+    }
+
+    .btn,
+    .btn i,
+    .nav-link {
+        transition: transform .5s;
+    }
+
+    .btn-scroll-down:hover {
+        transform: translateY(.5rem);
+    }
+
+    .btn-accent:hover {
+        transform: translateX(.5rem);
+    }
+
+    .hero-data {
+        top: 45%;
+        max-width: 80rem;
+        justify-self: center;
+    }
+
+    .cs-information {
+        margin-top: 0;
+        padding-top: 20rem;
+    }
+
+    .card {
+        column-gap: 8rem;
+    }
+
+    .card-image {
+        grid-column: initial; /* changes layout */
+        order: 1;
+        width: 48rem;
+        height: 68rem;
+        justify-self: end;
+    }
+
+    .card-info {
+        grid-column: initial;  /* changes layout */
+        align-self: center;
+    }
+
+    .order-first {
+        order: 0;
+        justify-self: start;
+    }
+}
+
+
+/* Account Page */
+
+.account-area {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+}
