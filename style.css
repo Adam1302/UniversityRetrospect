@@ -190,7 +190,7 @@ main {
     width: 100%;
     height: 100%;
     background-color: linear-gradient(to down, rgba(0,0,0,0), rgba(0,0,0,1), transparent 77%);
-    z-index: 50; 
+    z-index: 50;
 }
 
 .hero-data {
@@ -212,7 +212,7 @@ main {
     position: relative;
 }
 
-.tagline::before {
+.tagline::before { /* line before retrospect */
     content: "";
     position: absolute;
     top: 50%;
@@ -244,7 +244,7 @@ main {
     gap: 1rem;
 }
 
-.main-img {
+.main-img { /* background image on main page */
     position: absolute;
     left: 0;
     width: 100%;
@@ -267,24 +267,12 @@ main {
 #supplies {
     background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1)), url("./photos/pexels-mikhail-nilov-7583935.jpg") top/cover no-repeat fixed;
 }
-/*
-.parallax-img-bottom {
-    top: 55%;
-    z-index: 110;
-}
 
-.parallax-img-middle {
-    top: 35%;
-}
 
-.parallax-img-top {
-    top: 0;
-}
-*/
 /* information */
 .cs-information {
     position: relative;
-    margin-top: -12rem; /* I need to fade my image out up top */
+    margin-top: -12rem; /* Start cards while image is fading */
     z-index: 500;
 }
 
@@ -293,7 +281,7 @@ main {
 }
 
 .card {
-    gap: 6.4rem;
+    gap: 6.4rem; /* gap between cards */
     margin-bottom: 12rem;
 }
 
@@ -307,7 +295,7 @@ main {
 .count {
     font-size: 10rem;
     font-weight: bold;
-    opacity: 0.2;
+    opacity: 0.3;
     position: absolute;
     left: -2rem;
     z-index: -1; /* count will be behind text */
@@ -318,6 +306,7 @@ main {
     height: 42rem;
     object-fit: cover;
     justify-self: center;
+    border-radius: var(--border-radius);
 }
 
 .card-image.frame-position-center {
@@ -348,20 +337,6 @@ main {
     padding: 4rem 0 5rem;
 }
 
-.footer-container {
-    row-gap: 3.2rem;
-}
-
-.brand-information > *{ /* all direct children */
-    margin-bottom: var(--margin-bottom-md);
-}
-
-.end-image {
-    float: left;
-    background: var(--clr-accent);
-    border-radius: 20%;
-}
-
 .copyright {
     font-size: var(--font-size-sm);
     margin-bottom: 0;
@@ -369,18 +344,7 @@ main {
     text-align: right;
 }
 
-.footer-nav-title {
-    color: var(--clr-accent);
-    font-size: 2rem;
-    margin-bottom: var(--margin-bottom-md);
-}
-
-.footer-nav-link {
-    margin-bottom: var(--margin-bottom-sm);
-}
-
-.brand-information,
-.footer-nav-group {
+.brand-information {
     display: flex;
     flex-direction: column;
 }
@@ -401,14 +365,8 @@ main {
     }
 
     .card {
-        grid-template-columns: repeat(2, 1fr);
         row-gap: 6.4rem;
         margin-bottom: 20rem;
-    }
-
-    .card-image {
-        grid-column: 1/-1;
-        justify-self: center;
     }
 
     .card-info {
@@ -456,6 +414,15 @@ main {
         gap: 0;
     }
 
+    .card {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card-image {
+        grid-column: 1/-1;
+        justify-self: center;
+    }
+
     .sm-screen-hidden {
         display: block;
     }
@@ -497,7 +464,7 @@ main {
     }
 
     .hero-data {
-        top: 45%;
+        top: 15%;
         max-width: 80rem;
         justify-self: center;
     }
@@ -514,7 +481,7 @@ main {
     .card-image {
         grid-column: initial; /* changes layout */
         order: 1;
-        width: 48rem;
+        width: 70rem;
         height: 68rem;
         justify-self: end;
     }
