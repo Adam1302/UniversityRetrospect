@@ -1,6 +1,6 @@
 # UniversityRetrospect
 
-This is a website I created with the help of a YouTube tutorial after learning the basics of HTML and CSS.
+This is a website I created with the help of a YouTube tutorial after learning the basics of HTML, CSS, and JS.
 The guided walkthrough gave me a stronger understanding of HTML semantics and structure, CSS styles and variables, and some basic JS functions such as addEventListener, getElementById, and querySelector.
 I also incorporated my own additions such as a contact page and an account login page.
   (account login is purely visual, functionality was beyond my JS reach for the moment)
