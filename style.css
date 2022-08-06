@@ -42,23 +42,24 @@ body {
     font-size: var(--font-size-md);
     color: var(--clr-light);
     background-color: var(--clr-dark);
-    line-height: 3.2rem;
+    line-height: 2.9rem;
 }
 
 a {
-    text-decoration: none;
-    color: var(--clr-light);
+    text-decoration: none; /* No default underline and color change for the link */
+    color: var(--clr-light); /* White links */
 }
 
 i {
-    font-size: 2.4rem;
+    font-size: 2.4rem; /* Size of Icons */
 }
+
 ul {
-    list-style: none;
+    list-style: none; /* No bullets on menu list */
 }
 
 img {
-    max-width: 100%;
+    max-width: 100%; /* Image will take up full width, height will be automatically adjusted */
     height: auto;
 }
 
@@ -71,7 +72,12 @@ img {
 
 /* header */
 .header {
-    position: absolute; /* Header will float about content */
+    position: absolute; /* Header will float above content */
+    /* hypothetically, we could make this fixed and put a background to keep it on-screen at all times */
+    /*
+    position: fixed;
+    background: var(--clr-dark);
+    */
     top: 0;
     left: 0;
     width: 100%; /* needed since we made this absolute */
@@ -80,9 +86,9 @@ img {
 
 .nav {
     display: flex; /* items are displayed in a row */
-    align-items: center;
+    align-items: center; /* each item within nav will be centred */
     justify-content: space-between; /* keep spaces between flexbox items */
-    padding-top: 4rem;
+    padding-top: 4rem; /* bring the header down */
 }
 
 .logo-box {
@@ -97,6 +103,7 @@ img {
 .menu {
     position: fixed; /* will always be at top of screen */
     top: -100%; /* we will move this back down when menu icon is clicked */
+    /* top -100% is a way of hiding the menu */
     left: 50%;
     width: 80%;
 
@@ -105,7 +112,7 @@ img {
 
     background-color: var(--clr-dark);
 
-    z-index: 9999;
+    z-index: 9999; /* In front of everything else */
 
     transition: 0.5s ease-out;
 }
@@ -115,7 +122,7 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem; /* create spacing */
+    gap: 1.8rem; /* create spacing */
 }
 
 .menu-toggle-close {
@@ -126,10 +133,15 @@ img {
 
 .nav-link {
     letter-spacing: 1px;
+    transition: all 0.5s;
+}
+
+.nav-link:hover {
+    transform: translateY(-0.5rem);
 }
 
 .sm-screen-hidden {
-    display: none;
+    display: none; /* certain things will be hidden in the mobile screen */
 }
 
 .menu-toggle-icon {
@@ -137,11 +149,11 @@ img {
 }
 
 /* Menu Styles with JS */
-.menu.menu-opened {
+.menu.menu-opened { /* Menu becomes visible upon clicking menu */
     top: 0%;
 }
 
-.header::after { /* Background becomes invisible upon clicking menu */
+.header::after { /* Header before clicking menu icon is not visible, completely transparent */
     content: "";
     position: fixed;
     top: 0;
@@ -155,7 +167,7 @@ img {
     transition: opacity 0.5s;
 }
 
-.menu-opened.header::after {
+.menu-opened.header::after { /* now, full header comes into view */
     opacity: 1;
     transform: scale(1);
 }
@@ -317,8 +329,17 @@ main {
     margin-bottom: var(--margin-bottom-md);
 }
 
+.card-description::first-letter {
+    font-size: 2.4em;
+}
+
 .btn-accent {
     color: var(--clr-accent);
+    transition: all .35s;
+}
+
+.btn-accent:hover {
+    transform: translateX(1.2rem);
 }
 
 /* Footer */
