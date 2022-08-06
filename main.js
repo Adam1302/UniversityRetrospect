@@ -30,7 +30,7 @@ closeMenuIcon.addEventListener('click', () => {
     mobileMenu.classList.remove('menu-opened');
 
     headerOverlay.classList.remove('menu-opened');
-})
+});
 // See description above
 
 /* NOT USING THIS--PLS REMOVE

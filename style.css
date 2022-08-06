@@ -21,6 +21,8 @@
 
     --section-spacing: 4rem 0 2.5rem; /* 4 at top, 0 left/right, 2.5 at bottom */
     --container-spacing: 0 2.4rem;
+
+    --border-radius: 0.3rem; /* border of container and input boxes */
 }
 
 /* Base styles */
@@ -51,7 +53,6 @@ a {
 i {
     font-size: 2.4rem;
 }
-
 ul {
     list-style: none;
 }
@@ -512,8 +513,144 @@ main {
 /* Account Page */
 
 .account-area {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    background: var(--clr-accent);
 
+    width: 500px;
+    max-width: 500px;
+
+    margin: auto;
+    padding: 2rem;
+
+    margin-top: 25rem;
+
+    border-radius: var(--border-radius);
+}
+
+.form-hidden {
+    display: none;
+}
+
+.form > *:first-child {
+    margin-top: 0; /* don't want extra margins to be visible at top and bottom of box */
+}
+
+.form > *:last-child {
+    margin-bottom: 0;
+}
+
+.form-msg {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.form-message-success {
+    color: greenyellow;
+}
+
+.form-msg-error {
+    color: red;
+}
+
+.form-title {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.form-input-group {
+    margin-bottom: 1rem; /* space between input fields */
+}
+
+.form-input {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    border-radius: var(--border-radius);
+    border: 2px solid white;
+    outline: none;
+    background: #dddddd;
+
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.form-input:focus { /* triggered when the user clicks or taps on an element */
+    border-color: var(--clr-accent);
+    background: white;
+}
+
+.form-input-error {
+    color: red;
+    border-color: black;
+}
+
+.form-input-error-msg {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+}
+
+.form-button {
+    width: 100%;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    outline: none;
+    cursor: pointer;
+    background: #555555;
+}
+
+.form-button:hover { /* hovering over button */
+    background: var(--clr-dark);
+}
+
+.form-button:active { /* clicking on button */
+    transform: scale(0.99);
+}
+
+.form-text {
+    text-align: center;
+    padding-top: 1rem;
+    font-size: 0.8em;
+}
+
+.form-link {
+    color: var(--color-secondary);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.form-link:hover {
+    text-decoration: underline;
+}
+
+.form-link:active {
+    background: #dddddd;
+}
+
+/* Contacts */
+
+.contact-container {
+    margin: auto;
+    margin-top: 20rem;
+    background: #333333;
+
+    width: 800px;
+
+    padding: 5rem;
+
+    border-radius: 1rem;
+}
+
+.contact-container p,h1 {
+    padding: 2rem;
+}
+
+.resource-list {
+    margin-left: 5rem;
 }
